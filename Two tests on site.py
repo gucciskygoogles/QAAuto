@@ -36,6 +36,14 @@ class AutoMvideo(unittest.TestCase):
         time.sleep(4)
         self.assertTrue('кольцо' in driver.page_source)
         time.sleep(3)
+        
+    def test_premium_catalog(self):
+        driver = self.driver
+        driver.set_window_size(1936, 1056)
+        driver.get('https://www.mvideo.ru/')
+        driver.find_element_by_class_name('catalog-button').click()
+        time.sleep(3)
+        driver.find_element_by_link_text('Premium').click()
 
     def tearDown(self):
         self.driver.close()
