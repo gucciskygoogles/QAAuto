@@ -47,6 +47,25 @@ class AutoMvideo(unittest.TestCase):
 
     def tearDown(self):
         self.driver.close()
+        
+   
+class KinopoiskUI(unittest.TestCase):
+
+    def setUp(self) -> None:
+        self.driver = webdriver.Chrome()
+
+    def test_find_film(self):
+        driver = self.driver
+        driver.set_window_size(1936, 1056)
+        driver.get('https://www.kinopoisk.ru/')
+        search = driver.find_element_by_name('kp_query')
+        search.click()
+        search.send_keys('Она')
+        search.send_keys(Keys.RETURN)
+        assert 'Она' in driver.page_source
+        
+    def tearDown(self):
+        self.driver.close()
 
 
 
