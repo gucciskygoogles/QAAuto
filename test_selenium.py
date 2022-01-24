@@ -12,7 +12,7 @@ def browser():
 
 
 class TestAutoMvideo:
-
+    @pytest.mark.find_something
     def test_search_in_and_choose(self, browser):
         browser.implicitly_wait(3)
         browser.get('https://www.mvideo.ru/')
@@ -23,6 +23,7 @@ class TestAutoMvideo:
         first_res.click()
         browser.find_element(By.CLASS_NAME, 'mv-main-button--content').click()
 
+    @pytest.mark.with_assert
     def test_find_store(self, browser):
         browser.set_window_size(1936, 1056)
         browser.get('https://www.mvideo.ru/')
@@ -35,7 +36,8 @@ class TestAutoMvideo:
         time.sleep(4)
         assert 'кольцо' in browser.page_source
         time.sleep(3)
-        
+
+    @pytest.mark.find_something
     def test_premium_catalog(self, browser):
         browser.set_window_size(1936, 1056)
         browser.get('https://www.mvideo.ru/')
@@ -46,8 +48,8 @@ class TestAutoMvideo:
 
 class TestKinopoiskUI:
 
+    @pytest.mark.with_assert
     def test_find_film(self, browser):
-
         browser.set_window_size(1936, 1056)
         browser.get('https://www.kinopoisk.ru/')
         search = browser.find_element(By.NAME, 'kp_query')
