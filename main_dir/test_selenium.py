@@ -1,14 +1,8 @@
-from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
-import pytest
 from selenium.webdriver.common.by import By
+import pytest
 
-@pytest.fixture(scope="class")
-def browser():
-    browser = webdriver.Chrome()
-    yield browser
-    browser.quit()
 
 
 class TestAutoMvideo:
